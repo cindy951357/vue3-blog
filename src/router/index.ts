@@ -4,6 +4,7 @@ import RecommendPosts from '@/components/main/RecommendPosts.vue'
 import MyPosts from '@/components/main/MyPosts.vue'
 import PostDetailView from '@/views/PostDetailView.vue'
 import AddNewPost from '@/views/AddNewPost.vue'
+import SearchResult from '@/views/SearchResult.vue'
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
       {
         path: '',
         redirect: '/recommend' // 預設導向推薦
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: SearchResult
       }
     ]
   },
@@ -34,7 +40,7 @@ const routes = [
     path: '/add',
     name: 'addPost',
     component: AddNewPost
-  }
+  },
 ]
 
 const router = createRouter({

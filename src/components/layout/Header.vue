@@ -1,13 +1,23 @@
 <template>
-  <header class="bg-gray-100 py-4 px-6 flex justify-between items-center shadow">
+  <header class="w-full bg-gray-100 py-4 px-6 flex justify-between items-center shadow">
     <!-- 左半：Logo + 搜尋 -->
     <div class="flex items-center space-x-4">
       <div class="text-xl font-bold">MyBlog</div>
-      <input
-        type="text"
-        placeholder="Search..."
-        class="rounded-xxl border px-3 py-1 text-sm"
-      />
+      <div class="relative">
+        <input
+          type="text"
+          v-model="keyword"
+          @keyup.enter="doSearch"
+          placeholder="Search..."
+          class="rounded-xxl border px-3 py-1 text-sm pr-10"
+        />
+        <button
+          @click="doSearch"
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+        >
+          🔍
+        </button>
+      </div>
     </div>
     <!-- 右半：新增 + 設定 + 頭像 -->
     <div class="flex items-center space-x-4">
@@ -18,8 +28,16 @@
   </header>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
+
+const keyword = ref('')
+
+const doSearch = () => {
+  if (keyword.value.trim() === '') return
+  router.push(`/search?q=${encodeURIComponent(keyword.value.trim())}`)
+}
 
 const goToAdd = () => {
   router.push('/add')
