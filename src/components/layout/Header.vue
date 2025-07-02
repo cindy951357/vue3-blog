@@ -2,7 +2,7 @@
   <header class="w-full bg-gray-100 py-4 px-6 flex justify-between items-center shadow">
     <!-- 左半：Logo + 搜尋 -->
     <div class="flex items-center space-x-4 gap-2">
-      <div class="text-xl font-bold">MyBlog</div>
+      <div class="text-xl font-bold hover:cursor-pointer" @click="goToHomePage">MyBlog</div>
       <div class="relative border border-neutral-300 rounded-xxl">
         <input
           type="text"
@@ -46,5 +46,9 @@ const doSearch = () => {
 
 const goToAdd = () => {
   router.push('/add')
+}
+
+const goToHomePage = () => {
+  router.push('/');
 }
 </script>

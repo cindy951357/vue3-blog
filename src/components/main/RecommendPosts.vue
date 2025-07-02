@@ -5,7 +5,7 @@
       <li
         v-for="post in recommendPosts"
         :key="post.id"
-        class="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
+        class="border p-4 rounded-lg hover:bg-rose-100 cursor-pointer"
         @click="goToPost(post.id)"
       >
         <h3 class="text-xl font-semibold">{{ post.postTitle }}</h3>
