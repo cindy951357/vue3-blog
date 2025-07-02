@@ -1,7 +1,7 @@
 <template>
   <main class="flex flex-1 p-4 gap-4">
     <div class="w-2/3">
-      <HomeFeed />
+       <RouterView />
     </div>
     <div class="w-1/3">
       <RightPanel />
