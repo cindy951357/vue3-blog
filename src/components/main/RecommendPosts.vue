@@ -43,7 +43,6 @@ const getFirstTextRow = (post: Post) =>
 
 const getFirstImageRow = (post: Post) => {
     const findImg = post.rows.find(r => r.type === 'image')?.content || '';
-    console.log('findImg', );
     return findImg
 }
 </script>

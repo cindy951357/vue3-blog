@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full flex flex-1 p-4 gap-4">
+  <main class="w-full flex-1 p-4">
     <RouterView />
   </main>
 </template>

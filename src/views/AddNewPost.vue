@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-4xl h-full mx-auto p-4 flex flex-col justify-between">
+  <div class="w-full min-h-[580px] mx-auto p-4 flex flex-1 flex-col justify-between">
     <div class="top-half">
         <div id='edit-title-and-error' class="h-[80px] p-0">
           <h1 class="text-xl font-bold">新增文章
@@ -70,7 +70,9 @@
         <p v-if="rows.length >= NUM_ROW_PER_POST" class="text-red-600 text-sm text-center">
           ❗ 最多只能新增 {{ NUM_ROW_PER_POST }} 列
         </p>
-    </div>   
+    </div>  
+    <!-- 撐開用空區域 -->
+    <div class="flex flex-grow" /> 
     <div class="bottom-half text-center mt-6">
       <button
         class="w-full h-10 bg-neutral-300 hover:bg-rose-300 text-white px-6 py-2 rounded-xl"
@@ -135,6 +137,6 @@ const savePost = () => {
     themeTag: ''
   })
 
-  router.push('/myposts')
+  router.push('/myposts/posts')
 }
 </script>
