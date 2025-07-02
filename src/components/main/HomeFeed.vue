@@ -4,8 +4,8 @@ import RightPanel from './RightPanel.vue';
 </script>
 
 <template>
-  <div id="home-left-right-container" class="flex gap-8">
-    <div id="home-left" class="w-3/4">
+  <div id="home-left-right-container" class="flex flex-col sm:flex-row gap-8">
+    <div id="home-left" class="w-full sm:w-3/4">
       <div class="flex gap-x-4 mb-4 border-b pb-2">
         <RouterLink
           to="/recommend/posts"
@@ -22,7 +22,7 @@ import RightPanel from './RightPanel.vue';
 
       <RouterView /> <!-- 顯示 RecommendPosts 或 MyPosts -->
     </div>
-    <div id="home-right" class="w-1/4">
+    <div id="home-right" class="w-full sm:w-1/4">
       <RightPanel/>
     </div>
   </div>

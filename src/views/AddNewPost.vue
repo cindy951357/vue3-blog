@@ -48,14 +48,14 @@
 
         <!-- 底部新增列按鈕與 tooltip -->
         <div class="flex justify-center mt-4 relative group" style="margin-top:16px">
-          <button
+          <button @click="onAddBtnClick"
             class="w-full h-10 flex justify-center items-center text-2xl text-neutral-300 hover:text-rose-300 border border-neutral-300 rounded-xl
             hover:border-rose-300"
           >
             <add-icon/>
           </button>
 
-          <div
+          <div v-show="shouldShowAddBtns"
             class="absolute top-10 bg-white border p-2 rounded shadow-md flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
           >
             <button @click="addRow('text')" class="hover:text-rose-300 p-2 rounded">
@@ -102,7 +102,18 @@ const router = useRouter()
 const title = ref('')
 const rows = ref<PostRow[]>([])
 
+const shouldShowAddBtns = ref<Boolean>(false);
+
+const onAddBtnClick = () => {
+  shouldShowAddBtns.value = true;
+}
+
+const hideTextImgBtn = () => {
+  shouldShowAddBtns.value = false;
+}
+
 const addRow = (type: 'text' | 'image') => {
+  hideTextImgBtn();
   if (rows.value.length >= NUM_ROW_PER_POST) {
     modal.openModal(`最多只能新增 ${NUM_ROW_PER_POST} 列內容`)
     return
