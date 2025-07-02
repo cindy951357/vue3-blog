@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
-import type { Post, PostRow } from '@/types/post'
+import type { Post, PostRow } from '@/types/post';
+import type { Comment } from '@/types/comment';
 
 const topics = ['藝術', '旅遊', '科技', '心理健康', '美食', '音樂', '設計', '電影', '攝影', '歷史']
 const descriptions = {
@@ -58,3 +59,28 @@ export const MOCK_POSTS: Post[] = Array.from({ length: 20 }, (_, i) => {
     themeTag: topic
   }
 })
+
+const authors = ['小明', '阿花', 'David', 'Lily', '匿名者', '阿強']
+const commentsText = [
+  '這篇寫得真好！',
+  '受教了，謝謝分享。',
+  '我也有類似的經驗。',
+  '想了解更多這方面的內容。',
+  '超實用！已收藏！',
+  '讚讚讚！！',
+]
+
+const getRandomItem = (arr: string[]) =>
+  arr[Math.floor(Math.random() * arr.length)]
+
+export const MOCK_COMMENTS: Comment[] = MOCK_POSTS.flatMap(post => {
+  const numComments = Math.floor(Math.random() * 4) + 1 // 每篇 1~4 則留言
+  return Array.from({ length: numComments }, () => ({
+    id: uuidv4(),
+    postId: post.id,
+    author: getRandomItem(authors),
+    content: getRandomItem(commentsText),
+    time: new Date().toLocaleString()
+  }))
+})
+

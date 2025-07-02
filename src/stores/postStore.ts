@@ -19,7 +19,7 @@ const generateDummyPost = (id: number, isRecommend: boolean): Post => {
   }
 
   return {
-    id: `post-${id}`,
+    id: id.toString(),
     postTitle: `文章標題 #${id}`,
     rows,
     isRecommend,
