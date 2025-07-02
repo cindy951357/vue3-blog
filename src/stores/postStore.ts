@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Post, PostRow } from '@/types/post'
 import { NUM_ROW_PER_POST } from '@/constants/constant'
+import { MOCK_POSTS } from '@/constants/mock';
 
 const generateDummyPost = (id: number, isRecommend: boolean): Post => {
   const rows: PostRow[] = []
@@ -27,7 +28,7 @@ const generateDummyPost = (id: number, isRecommend: boolean): Post => {
 }
 
 export const usePostStore = defineStore('postStore', () => {
-  const postList = ref<Post[]>([])
+  const postList = ref<Post[]>([...MOCK_POSTS])
   const currentPost = ref<Post | null>(null)
 
   const initDummyPosts = () => {

@@ -10,4 +10,5 @@ export interface Post {
   rows: PostRow[];
   isRecommend: boolean;
   time: string;
+  themeTag: string;
 }
