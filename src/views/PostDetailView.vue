@@ -76,6 +76,7 @@ const addComment = () => {
     content: inputComment,
     time: new Date().toLocaleDateString(),
   });
+  inputComment.value = '';
 }
 
 </script>

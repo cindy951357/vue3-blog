@@ -1,7 +1,8 @@
 <template>
-  <header class="w-full bg-gray-100 py-4 px-6 flex justify-between items-center shadow">
+  <header class="w-full bg-gray-100 py-4 px-6 flex flex-col gap-2 justify-start
+    sm:flex-row sm:justify-between shadow">
     <!-- 左半：Logo + 搜尋 -->
-    <div class="flex items-center space-x-4 gap-2">
+    <div class="flex items-center gap-2">
       <div class="text-xl font-bold hover:cursor-pointer" @click="goToHomePage">MyBlog</div>
       <div class="relative border border-neutral-300 rounded-xxl">
         <input
@@ -20,7 +21,7 @@
       </div>
     </div>
     <!-- 右半：新增 + 設定 + 頭像 -->
-    <div class="flex items-center space-x-4">
+    <div class="flex items-center sm:justify-start sm:items-start">
       <button class="text-neutral-600 hover:text-rose-300" @click="goToAdd"><AddIcon/></button>
       <button class="text-neutral-600 hover:text-rose-300"><setting-icon/></button>
       <button class="text-neutral-600 hover:text-rose-300"><profile-icon/></button>
