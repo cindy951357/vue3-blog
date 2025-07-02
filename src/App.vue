@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from '@/components/common/Modal.vue'
 </script>
 
 <template>
   <RouterView />
+  <Modal/>
 </template>
 
 <style scoped>
