@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="font-bold text-lg mb-2">我的文章（共 {{ myPosts.length }} 篇）</h2>
-    <ul class="flex flex-col gap-2">
+    <ul class="flex flex-col gap-y-4">
       <li
         v-for="post in myPosts"
         :key="post.id"

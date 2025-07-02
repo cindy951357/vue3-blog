@@ -21,9 +21,9 @@
     </div>
     <!-- 右半：新增 + 設定 + 頭像 -->
     <div class="flex items-center space-x-4">
-      <button class="text-neutral-600 hover:text-purple-300" @click="goToAdd"><AddIcon/></button>
-      <button class="text-neutral-600 hover:text-purple-300"><setting-icon/></button>
-      <button class="text-neutral-600 hover:text-purple-300"><profile-icon/></button>
+      <button class="text-neutral-600 hover:text-rose-300" @click="goToAdd"><AddIcon/></button>
+      <button class="text-neutral-600 hover:text-rose-300"><setting-icon/></button>
+      <button class="text-neutral-600 hover:text-rose-300"><profile-icon/></button>
     </div>
   </header>
 </template>

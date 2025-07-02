@@ -6,9 +6,9 @@
           <li v-for="post in myLatestPosts.slice(0, 5)" :key="post.id">
             <RouterLink
               :to="`/post/${post.id}`"
-              class="hover:underline hover:text-purple-300"
+              class="hover:underline hover:text-rose-300"
             >
-              {{ post.postTitle }} - {{ formatDate(post.time) }}
+              {{ post.postTitle }} - {{ post.time }}
             </RouterLink>
           </li>
         </ul>

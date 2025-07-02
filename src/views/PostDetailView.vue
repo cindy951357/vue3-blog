@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl mx-auto p-4">
-    <button @click="router.back()" class="text-purple-300 text-sm mb-4">← 返回</button>
+    <button @click="router.back()" class="text-rose-300 text-sm mb-4">← 返回</button>
 
     <div v-if="post" class="space-y-4">
       <h1 class="text-2xl font-bold">{{ post.postTitle }}</h1>

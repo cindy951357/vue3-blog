@@ -1,21 +1,26 @@
 <template>
   <div class="max-w-4xl h-full mx-auto p-4 flex flex-col justify-between">
     <div class="top-half">
-      <h1 class="text-xl font-bold">新增文章</h1>
+        <div id='edit-title-and-error' class="h-[80px] p-0">
+          <h1 class="text-xl font-bold">新增文章
+            <span v-if="title.trim() === ''" class="text-red-500 text-sm">標題必填
+              </span>
+            </h1>
+          
+          <input
+            type="text"
+            v-model="title"
+            placeholder="請輸入標題"
+            class="border p-2 w-full rounded"
+          />
+        </div>
+        
 
-        <input
-          type="text"
-          v-model="title"
-          placeholder="請輸入標題"
-          class="border p-2 w-full rounded"
-        />
-        <span v-if="title.trim() === ''" class="text-red-500 text-sm">⚠️ 標題必填</span>
-
-        <div class="w-full space-y-4">
+        <div class="w-full flex flex-col gap-4">
           <div
             v-for="(row, index) in rows"
             :key="row.id"
-            class="w-full border p-2 rounded flex group bg-white"
+            class="w-full border p-2 rounded flex group bg-white mb-4"
           >
             <!-- 內容顯示 -->
             <div v-if="row.type === 'text'" class="w-9/10">
@@ -42,21 +47,22 @@
         </div>
 
         <!-- 底部新增列按鈕與 tooltip -->
-        <div class="flex justify-center mt-4 relative group">
+        <div class="flex justify-center mt-4 relative group" style="margin-top:16px">
           <button
-            class="text-2xl text-neutral-600 hover:scale-125 transition-transform"
+            class="w-full h-10 flex justify-center items-center text-2xl text-neutral-300 hover:text-rose-300 border border-neutral-300 rounded-xl
+            hover:border-rose-300"
           >
             <add-icon/>
           </button>
 
           <div
-            class="absolute top-8 bg-white border p-2 rounded shadow-md flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+            class="absolute top-10 bg-white border p-2 rounded shadow-md flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10"
           >
-            <button @click="addRow('text')" class="hover:bg-gray-100 p-2 rounded">
-              🅣
+            <button @click="addRow('text')" class="hover:text-rose-300 p-2 rounded">
+              <text-icon/>
             </button>
-            <button @click="addRow('image')" class="hover:bg-gray-100 p-2 rounded">
-              🖼️
+            <button @click="addRow('image')" class="hover:text-rose-300 p-2 rounded">
+              <image-icon/>
             </button>
           </div>
         </div>
@@ -67,7 +73,7 @@
     </div>   
     <div class="bottom-half text-center mt-6">
       <button
-        class="bg-gray-300 hover:bg-purple-300 text-white px-6 py-2 rounded-xl"
+        class="w-full h-10 bg-neutral-300 hover:bg-rose-300 text-white px-6 py-2 rounded-xl"
         @click="savePost"
       >儲存</button>
     </div>
@@ -84,6 +90,8 @@ import type { PostRow } from '@/types/post';
 import { v4 as uuidv4 } from 'uuid';
 import AddIcon from '@/components/icons/AddIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
+import TextIcon from '@/components/icons/TextIcon.vue';
+import ImageIcon from '@/components/icons/ImageIcon.vue';
 
 const postStore = usePostStore()
 const modal = useModalStore()

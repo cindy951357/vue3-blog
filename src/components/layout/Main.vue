@@ -10,6 +10,5 @@
 </template>
 
 <script setup lang="ts">
-import HomeFeed from '@/components/main/HomeFeed.vue'
 import RightPanel from '@/components/main/RightPanel.vue'
 </script>
