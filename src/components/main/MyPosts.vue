@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 class="font-bold text-lg mb-2">我的文章（共 {{ myPosts.length }} 篇）</h2>
-    <ul class="space-y-4">
+    <ul class="flex flex-col gap-2">
       <li
         v-for="post in myPosts"
         :key="post.id"
-        class="border p-4 rounded-lg hover:bg-gray-50 cursor-pointer"
+        class="border p-4 rounded-lg hover:bg-neutral-100 cursor-pointer"
         @click="goToPost(post.id)"
       >
         <h3 class="text-xl font-semibold">{{ post.postTitle }}</h3>
