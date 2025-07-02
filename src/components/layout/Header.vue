@@ -21,16 +21,19 @@
     </div>
     <!-- 右半：新增 + 設定 + 頭像 -->
     <div class="flex items-center space-x-4">
-      <button class="text-blue-600" @click="goToAdd">➕</button>
-      <button class="text-gray-600">⚙️</button>
-      <button class="text-gray-600">👤</button>
+      <button class="text-neutral-600 hover:text-purple-300" @click="goToAdd"><AddIcon/></button>
+      <button class="text-neutral-600 hover:text-purple-300"><setting-icon/></button>
+      <button class="text-neutral-600 hover:text-purple-300"><profile-icon/></button>
     </div>
   </header>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'
-import SearchIcon from '@/components/icons/SearchIcon.vue'
+import { useRouter } from 'vue-router';
+import SearchIcon from '@/components/icons/SearchIcon.vue';
+import AddIcon from '@/components/icons/AddIcon.vue';
+import SettingIcon from '@/components/icons/SettingIcon.vue';
+import ProfileIcon from '@/components/icons/ProfileIcon.vue';
 
 const router = useRouter()
 

@@ -2,10 +2,16 @@
   <div class="flex flex-col gap-4">
     <section>
       <h2 class="flex gap-1 font-bold mb-2"><SparkleIcon/> 我的最新文章</h2>
-      <ul class="text-sm space-y-1">
-        <li>文章 A - 7/2</li>
-        <li>文章 B - 7/1</li>
-      </ul>
+        <ul class="text-sm space-y-1">
+          <li v-for="post in myLatestPosts.slice(0, 5)" :key="post.id">
+            <RouterLink
+              :to="`/post/${post.id}`"
+              class="hover:underline hover:text-purple-300"
+            >
+              {{ post.postTitle }} - {{ formatDate(post.time) }}
+            </RouterLink>
+          </li>
+        </ul>
     </section>
     <section>
       <h2 class="flex gap-1 font-bold mb-2"><CommentIcon/> 訪客留言</h2>
@@ -17,6 +23,21 @@
   </div>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue';
 import CommentIcon from '@/components/icons/CommentIcon.vue';
 import SparkleIcon from '@/components/icons/SparkleIcon.vue';
+import { usePostStore } from '@/stores/postStore';
+import { RouterLink } from 'vue-router';
+
+const postStore = usePostStore();
+
+const myLatestPosts = computed(() =>
+  postStore.postList.filter(post => !post.isRecommend)
+  .sort((a, b) => b.time.localeCompare(a.time))
+);
+const formatDate = (iso: string) => {
+  const d = new Date(iso)
+  return `${d.getMonth() + 1}/${d.getDate()}`
+}
+
 </script>
