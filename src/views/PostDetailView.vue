@@ -88,7 +88,7 @@ const addComment = () => {
     id: uuidv4(),
     postId: post.id.toString(),
     author: 'Jane',
-    content: inputComment,
+    content: inputComment.value,
     time: new Date().toLocaleDateString(),
   });
   inputComment.value = '';

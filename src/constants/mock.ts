@@ -49,14 +49,18 @@ export const MOCK_POSTS: Post[] = Array.from({ length: 20 }, (_, i) => {
   const textRows = generateTextRows(topic, i)
   const imageRows = generateImageRows(i)
   const allRows = mixRows(textRows, imageRows)
+  const randomSeconds = Math.floor(Math.random() * 60); //隨機增加一些秒數，形成差異
+  const now = new Date()
+  now.setSeconds(randomSeconds)
 
   return {
     id: `post-${i + 1}`,
     postTitle: `${topic}探索 #${i + 1}`,
     rows: allRows,
     isRecommend: i % 2 === 0,
-    time: new Date().toLocaleString(),
-    themeTag: topic
+    time: now.toLocaleString(),
+    themeTag: topic,
+    author: 'Rose',
   }
 })
 
@@ -75,12 +79,17 @@ const getRandomItem = (arr: string[]) =>
 
 export const MOCK_COMMENTS: Comment[] = MOCK_POSTS.flatMap(post => {
   const numComments = Math.floor(Math.random() * 4) + 1 // 每篇 1~4 則留言
+  const randomSeconds = Math.floor(Math.random() * 60); //隨機增加一些秒數，形成差異
+  const now = new Date();
+  now.setSeconds(randomSeconds);
+
+const time = now.toLocaleString()
   return Array.from({ length: numComments }, () => ({
     id: uuidv4(),
     postId: post.id,
     author: getRandomItem(authors),
     content: getRandomItem(commentsText),
-    time: new Date().toLocaleString()
+    time: now.toLocaleString(),
   }))
 })
 

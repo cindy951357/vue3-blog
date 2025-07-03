@@ -39,11 +39,10 @@ const commentStore = useCommentStore();
 
 const myLatestPosts = computed(() =>
   postStore.postList.filter(post => !post.isRecommend)
-  .sort((a, b) => b.time.localeCompare(a.time))
-);
+  .sort((a, b) =>  new Date(b.time).getTime() - new Date(a.time).getTime()));
 const latestComment = computed(() =>
-  commentStore.commentList.sort((a, b) => b.time.localeCompare(a.time))
-)
+  commentStore.commentList.sort(
+    (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()))
 const formatDate = (iso: string) => {
   const d = new Date(iso)
   return `${d.getMonth() + 1}/${d.getDate()}`
