@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col gap-4">
     <section>
-      <h2 class="flex gap-1 font-bold mb-2"><SparkleIcon/> 我的最新文章</h2>
+      <h2 class="flex gap-1 font-bold mb-2 text-lg"><SparkleIcon/> 我的最新文章</h2>
         <ul class="text-sm space-y-1">
           <li v-for="post in myLatestPosts.slice(0, 5)" :key="post.id">
             <RouterLink
               :to="`/post/${post.id}`"
-              class="hover:underline hover:text-rose-300"
+              class="hover:underline hover:text-rose-300 focus:text-rose-300"
             >
               {{ post.postTitle }} - {{ post.time }}
             </RouterLink>
@@ -14,10 +14,12 @@
         </ul>
     </section>
     <section>
-      <h2 class="flex gap-1 font-bold mb-2"><CommentIcon/> 訪客留言</h2>
+      <h2 class="flex gap-1 font-bold mb-2 text-lg"><CommentIcon/> 訪客留言</h2>
       <ul class="text-sm space-y-1">
         <li v-for="comment in latestComment.slice(0,5)" :key="comment.id">
-          <RouterLink :to="`/post/${comment.postId}?commentId=${comment.id}`">
+          <RouterLink :to="`/post/${comment.postId}?commentId=${comment.id}`"
+            class="hover:underline hover:text-rose-300 focus:text-rose-300"
+          >
             {{ comment.content }} - {{ comment.time }}
             By {{ comment.author }}
           </RouterLink>
@@ -43,9 +45,4 @@ const myLatestPosts = computed(() =>
 const latestComment = computed(() =>
   commentStore.commentList.sort(
     (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()))
-const formatDate = (iso: string) => {
-  const d = new Date(iso)
-  return `${d.getMonth() + 1}/${d.getDate()}`
-}
-
 </script>

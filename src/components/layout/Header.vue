@@ -21,10 +21,10 @@
       </div>
     </div>
     <!-- 右半：新增 + 設定 + 頭像 -->
-    <div class="flex items-center sm:justify-start sm:items-start">
-      <button class="text-neutral-600 hover:text-rose-300" @click="goToAdd"><AddIcon/></button>
-      <button class="text-neutral-600 hover:text-rose-300"><setting-icon/></button>
-      <button class="text-neutral-600 hover:text-rose-300"><profile-icon/></button>
+    <div class="flex items-center sm:justify-start sm:items-start gap-2">
+      <button class="text-neutral-600 hover:text-rose-300 focus:text-rose-300" @click="goToAdd"><AddIcon/></button>
+      <button class="text-neutral-600 hover:text-rose-300 focus:text-rose-300"><setting-icon/></button>
+      <button class="text-neutral-600 hover:text-rose-300 focus:text-rose-300"><profile-icon/></button>
     </div>
   </header>
 </template>
