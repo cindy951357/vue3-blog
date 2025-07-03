@@ -11,4 +11,5 @@ export interface Post {
   isRecommend: boolean;
   time: string;
   themeTag: string;
+  author: string;
 }

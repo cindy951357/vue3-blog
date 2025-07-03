@@ -25,7 +25,8 @@
           />
           <button class="w-full h-10 bg-neutral-300 hover:bg-rose-300 rounded-xl px-2" @click="addComment()">提交留言</button>
         </div>
-        <div v-for="comment in commentOfThisPost" :key="comment.id" class="border-t-2 border-t-neutral-300">
+        <div :id="`comment-${comment.id}`" v-for="comment in commentOfThisPost" :key="comment.id"
+          class="border-t-2 border-t-neutral-300">
           <div>{{ comment.content }}</div>
           <div class="text-xs">By <span>{{ comment.author }}</span>
             <span>{{ comment.time }}</span>
@@ -40,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { usePostStore } from '@/stores/postStore';
 import { useCommentStore } from '@/stores/commentStore';
@@ -56,7 +57,21 @@ const postId = route.params.id as string
 
 onMounted(() => {
   postStore.setCurrentPostById(postId)
-})
+
+  setTimeout(() => {
+    const targetId = route.query.commentId as string
+    if (targetId) {
+      const el = document.getElementById(`comment-${targetId}`)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        el.classList.add('ring-2', 'ring-rose-300', 'rounded')
+        setTimeout(() => {
+          el.classList.remove('ring-2', 'ring-rose-300', 'rounded')
+        }, 1600)
+      }
+    }
+  }, 800) // 延遲 800ms 可確保圖片載入完
+});
 
 const inputComment = ref('');
 

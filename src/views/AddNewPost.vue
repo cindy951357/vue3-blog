@@ -145,7 +145,8 @@ const savePost = () => {
     time: new Date().toLocaleString(),
     isRecommend: false,
     rows: rows.value.map(r => ({ ...r })),
-    themeTag: ''
+    themeTag: '',
+    author: 'Rose',
   })
 
   router.push('/myposts/posts')
